@@ -1,0 +1,55 @@
+{
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts",
+      "**/*.js"
+    ]
+  },
+  "rules": {
+    "quotemark": [true, "single", "jsx-double", "avoid-escape", "avoid-template"],
+    "trailing-comma": [true, "never"],
+    "import-spacing": true,
+    "whitespace": [
+      true, 
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "no-consecutive-blank-lines": true,
+    "one-variable-per-declaration": false,
+    "triple-equals": false,
+    "max-classes-per-file": [true, 20, "exclude-class-expressions"],
+    "ordered-imports": false,
+    "no-unused-variable": false,
+    "indent": [true, "spaces", 2],
+    "no-debugger": false,
+    "no-namespace": false,
+    "no-empty-interface": false,
+    "no-string-literal": false,
+    "no-conditional-assignment": true,
+    "no-trailing-whitespace": true,
+    "semicolon": [true, "never"],
+    "no-console": [true, { "allow": ["warn", "error"] }],
+    "typedef": [true, "call-signature", "parameter", "member-variable-declaration"],
+    "object-literal-sort-keys": false,
+    "class-name": true,
+    "prefer-const": false,
+    "array-type": [true, "array"],
+    "no-irregular-whitespace": true,
+    "no-multi-spaces": "warning",
+    "jsx-no-multiline-js": false,
+    "max-line-length": [true, 500],
+    "jsx-wrap-multiline": false,
+    "jsx-alignment": false,
+    "no-angle-bracket-type-assertion": false,
+    "no-var-requires": false,
+    "jsx-no-lambda": false
+  }
+}

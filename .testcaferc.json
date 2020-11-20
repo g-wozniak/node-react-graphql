@@ -1,0 +1,12 @@
+{
+  "selectorTimeout": 3000,
+  "assertionTimeout": 500,
+  "pageLoadTimeout": 1000,
+  "color": true,
+  "speed": 1,
+  "src": ["src/__tests__/webapp"],
+  "tsConfigPath": "./tsconfig.json",
+  "clientScripts": [
+    { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
+  ]
+}

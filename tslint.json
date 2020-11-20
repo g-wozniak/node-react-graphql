@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "./tslint.rules.json",
+    "tslint-eslint-rules"
+  ]
+}
