@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events'
 import * as express from 'express'
 import { Request, Response, NextFunction } from 'express'
+import { graphqlHTTP } from 'express-graphql'
 import { Server } from 'http'
 import { v4 as uuid } from 'uuid'
 import { IServer, ISystem } from './intf/IServer'
@@ -8,6 +9,8 @@ import { IServerLocals } from './intf/IServerLocals'
 import { log } from './logger'
 import LogLevels from './props/LogLevels'
 import Logs from './props/Logs'
+
+import schema from './api/schema'
 
 const path = require('path')
 const fs = require('fs')
@@ -119,7 +122,7 @@ export const server = ({ port, verbose, config, callback }: IServer): Server => 
 
   app.use(express.urlencoded({ extended: false }))
 
-  app.use(helmet())
+  app.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV === 'production') ? undefined : false }))
 
   app.use(cors())
 
@@ -130,6 +133,16 @@ export const server = ({ port, verbose, config, callback }: IServer): Server => 
   app.use('/images', !compression ? express.static(imagesDir) : expressStaticGzip(imagesDir, gzipOptions))
 
   app.use('/styles', !compression ? express.static(stylesDir) : expressStaticGzip(stylesDir, gzipOptions))
+
+  app.post('/graphql', graphqlHTTP({
+    schema,
+    graphiql: false
+  }))
+
+  app.get('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+  }))
 
   app.get('*', (req, res, next) => {
     res.sendFile(webAppIndexPath)

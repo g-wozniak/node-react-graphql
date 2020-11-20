@@ -35,7 +35,7 @@ module.exports = env => {
     ])
   ]
   
-  if (COMPRESSION) {
+  if (COMPRESSION === 'true') {
     plugins = plugins.concat([
       new CompressionPlugin({
         filename: '[path].gz[query]',
